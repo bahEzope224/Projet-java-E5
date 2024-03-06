@@ -10,6 +10,33 @@ public class EmpruntLivreWindow extends JFrame {
     private JComboBox<String> livresCombo;
     private JLabel livreDetailsLabel;
     private JButton emprunterButton;
+    private LibraryManagementPage libraryManagementPage;
+    
+        public EmpruntLivreWindow(LibraryManagementPage libraryManagementPage) {
+            super("Emprunter un Livre");
+            this.libraryManagementPage = libraryManagementPage;
+    
+            JPanel panel = new JPanel();
+            JButton backButton = new JButton("Retour à la Bibliothèque");
+            backButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    goBackToLibraryManagementPage();
+                }
+            });
+            panel.add(backButton);
+            add(panel);
+    
+            setLocationRelativeTo(libraryManagementPage);
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            pack();
+            setVisible(true);
+        }
+    
+        private void goBackToLibraryManagementPage() {
+            libraryManagementPage.setVisible(true);
+            dispose();
+        }
+    
 
     public EmpruntLivreWindow() {
         super("Emprunter un livre");
