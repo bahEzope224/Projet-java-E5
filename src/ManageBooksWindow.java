@@ -217,7 +217,8 @@ public class ManageBooksWindow extends JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/e5-bilotheque-java", "root", "root"); //Connexion a la bdd
 
-            PreparedStatement insertStmt = con.prepareStatement("INSERT INTO livre (titre, prix, autnum_1, disponibilite) VALUES (?, ?, (SELECT autnum FROM auteur WHERE CONCAT(nom, ' ', prenom) = ?), ?)");
+            PreparedStatement insertStmt = con.prepareStatement("INSERT INTO livre (titre, prix, autnum_1, disponibilite) 
+            VALUES (?, ?, (SELECT autnum FROM auteur WHERE CONCAT(nom, ' ', prenom) = ?), ?)");
             insertStmt.setString(1, titre);
             insertStmt.setString(2, prix);
             insertStmt.setString(3, auteur);
